@@ -108,11 +108,10 @@ function start({ dataUri, rendererName, canvas }) {
   });
 
   setInterval(() => {
-    console.log(decoder.decodeQueueSize);
-    if (decoder.decodeQueueSize === 0) {
+    if (pendingFrames.length < 100) {
       chunkReader.read().then(({ value: chunk }) => decoder.decode(chunk));
     }
-  }, 33);
+  }, 10);
 
   let firstChunk = true;
   // Fetch and demux the media data.
