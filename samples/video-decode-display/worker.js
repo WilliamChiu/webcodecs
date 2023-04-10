@@ -108,7 +108,7 @@ function start({ dataUri, rendererName, canvas }) {
   });
 
   setInterval(() => {
-    if (pendingFrames.length < 100) {
+    if (pendingFrames.length < 1) {
       chunkReader.read().then(({ value: chunk }) => decoder.decode(chunk));
     }
   }, 10);
